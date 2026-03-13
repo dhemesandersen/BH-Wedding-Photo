@@ -27,12 +27,12 @@ function Hero() {
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto flex flex-col items-center">
+      <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto flex flex-col items-center pt-24 md:pt-0">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-[83px] leading-[93px] font-serif mb-6"
+          className="text-4xl sm:text-5xl md:text-[83px] leading-tight md:leading-[93px] font-serif mb-6"
         >
           Destination Wedding <br className="hidden md:block" />
           <span className="italic">Photo & Video in Portugal</span>
@@ -66,7 +66,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2 z-20"
       >
         <span className="text-[10px] uppercase tracking-widest">Scroll</span>
         <ChevronDown className="w-4 h-4 animate-bounce" />
@@ -258,25 +258,25 @@ function Galleries() {
       </div>
 
       {/* Horizontal Slider for Blog Galleries */}
-      <div className="w-full overflow-hidden mb-32 relative">
-        <div className="flex w-max animate-marquee hover:[animation-play-state:paused] gap-4 md:gap-6 px-4 md:px-6">
+      <div className="w-full overflow-x-auto md:overflow-hidden mb-32 relative scrollbar-hide snap-x snap-mandatory">
+        <div className="flex w-max md:animate-marquee hover:[animation-play-state:paused] gap-4 md:gap-6 px-4 md:px-6">
           {[...blogGalleries, ...blogGalleries].map((gallery, idx) => (
             <a 
               key={idx} 
               href={gallery.link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="relative flex-none w-[85vw] md:w-[45vw] lg:w-[30vw] aspect-[4/5] group overflow-hidden rounded-2xl"
+              className="relative flex-none w-[80vw] md:w-[45vw] lg:w-[30vw] aspect-[3/2] md:aspect-[4/5] group overflow-hidden rounded-2xl snap-center"
             >
               <img 
                 src={gallery.img} 
                 alt={gallery.name} 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/50 transition-colors duration-500" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="text-white text-2xl md:text-3xl font-serif mb-4 text-center px-4">{gallery.name}</h3>
-                <span className="text-white text-xs tracking-[0.2em] uppercase border-b border-white/50 pb-1 flex items-center gap-2">
+              <div className="absolute inset-0 bg-black/40 md:bg-black/20 md:group-hover:bg-black/50 transition-colors duration-500" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="text-white text-xl md:text-3xl font-serif mb-4 text-center px-4">{gallery.name}</h3>
+                <span className="text-white text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-white/50 pb-1 flex items-center gap-2">
                   Ver Galeria <ArrowRight className="w-3 h-3" />
                 </span>
               </div>
