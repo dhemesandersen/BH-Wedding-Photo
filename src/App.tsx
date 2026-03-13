@@ -32,7 +32,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 leading-tight"
+          className="text-[83px] leading-[93px] font-serif mb-6"
         >
           Destination Wedding <br className="hidden md:block" />
           <span className="italic">Photo & Video in Portugal</span>
@@ -674,10 +674,10 @@ function Footer() {
       </a>
       
       <div className="flex flex-wrap justify-center gap-6 text-[11px] tracking-widest uppercase text-black/60">
-        <a href="https://bhweddingphoto.com/sobre-nos/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Sobre Nós</a>
-        <a href="https://bhweddingphoto.com/foto-casamento/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Portefólio</a>
-        <a href="https://bhweddingphoto.com/blog/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Galerias</a>
-        <a href="https://bhweddingphoto.com/contacto/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Contacto</a>
+        <a href="https://bhweddingphoto.com/sobre-nos/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">About Us</a>
+        <a href="https://bhweddingphoto.com/foto-casamento/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Portfolio</a>
+        <a href="https://bhweddingphoto.com/blog/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Galleries</a>
+        <a href="https://bhweddingphoto.com/contacto/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Contact</a>
       </div>
 
       <div className="flex gap-6 text-[11px] tracking-widest uppercase text-black/60">
@@ -686,11 +686,11 @@ function Footer() {
       </div>
 
       <div className="flex flex-wrap justify-center gap-4 text-[10px] text-black/40 uppercase tracking-widest mt-4">
-        <a href="https://bhweddingphoto.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Política de Privacidade</a>
+        <a href="https://bhweddingphoto.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Privacy Policy</a>
         <span className="hidden md:inline">|</span>
-        <a href="https://bhweddingphoto.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Termos e Condições</a>
+        <a href="https://bhweddingphoto.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Terms & Conditions</a>
         <span className="hidden md:inline">|</span>
-        <a href="https://bhweddingphoto.com/cookies-policy/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Política de Cookies</a>
+        <a href="https://bhweddingphoto.com/cookies-policy/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Cookie Policy</a>
       </div>
 
       <p className="text-[10px] text-black/40 uppercase tracking-widest mt-2">
@@ -732,7 +732,7 @@ function Header() {
           <img 
             src="https://bhweddingphoto.com/wp-content/uploads/2024/01/Untitled-design-2024-01-23T064322.326.png" 
             alt="BH Wedding Photo" 
-            className={`h-8 md:h-10 w-auto object-contain transition-all duration-500 ${!isScrolled ? 'brightness-0 invert' : ''}`}
+            className={`h-[42px] md:h-[52px] w-auto object-contain transition-all duration-500 ${!isScrolled ? 'brightness-0 invert' : ''}`}
             referrerPolicy="no-referrer"
           />
         </a>
