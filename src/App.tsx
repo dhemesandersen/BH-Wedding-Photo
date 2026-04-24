@@ -14,9 +14,15 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
   </motion.div>
 );
 
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section className="relative h-[100dvh] w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
         <iframe
           src="https://player.vimeo.com/video/1173190488?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1#t=3s"
@@ -27,22 +33,22 @@ function Hero() {
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto flex flex-col items-center pt-24 md:pt-0">
+      <div className="relative z-10 text-center text-white px-6 w-full max-w-4xl mx-auto flex flex-col items-center mt-12 md:mt-0">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-[83px] leading-tight md:leading-[93px] font-serif mb-6"
+          className="text-[28px] leading-snug sm:text-4xl md:text-[83px] md:leading-[93px] font-serif mb-6 md:mb-6"
         >
           Destination Wedding <br className="hidden md:block" />
-          <span className="italic">Photo & Video in Portugal</span>
+          <span className="italic block md:inline mt-2 md:mt-0">Photo & Video in Portugal</span>
         </motion.h1>
         
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="text-sm md:text-base tracking-widest uppercase font-sans mb-12 max-w-2xl text-white/90 leading-relaxed"
+          className="text-[10px] md:text-base tracking-widest uppercase font-sans mb-8 md:mb-12 max-w-2xl text-white/90 leading-relaxed"
         >
           Editorial storytelling with Photography, Videography & Aerial Drone coverage for couples traveling from around the world.
         </motion.p>
@@ -51,12 +57,12 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="flex flex-col sm:flex-row items-center gap-6"
+          className="flex flex-col sm:flex-row items-center gap-5 md:gap-6"
         >
-          <a href="#contact" className="bg-white text-black px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-white/90 transition-colors duration-300">
+          <a href="#contact" className="bg-white text-black px-6 md:px-8 py-3 md:py-4 text-[10px] md:text-xs tracking-[0.2em] uppercase hover:bg-white/90 transition-colors duration-300">
             Check Your Wedding Date
           </a>
-          <a href="#galleries" className="text-white border-b border-white/30 pb-1 text-xs tracking-[0.2em] uppercase hover:border-white transition-colors duration-300">
+          <a href="#galleries" className="text-white border-b border-white/30 pb-1 text-[10px] md:text-xs tracking-[0.2em] uppercase hover:border-white transition-colors duration-300">
             View Our Work
           </a>
         </motion.div>
@@ -66,7 +72,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2 z-20"
+        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-1 z-20"
       >
         <span className="text-[10px] uppercase tracking-widest">Scroll</span>
         <ChevronDown className="w-4 h-4 animate-bounce" />
@@ -135,8 +141,9 @@ function AboutUs() {
           
           <FadeIn delay={0.2}>
             <div className="space-y-6 text-sm md:text-base text-black/70 font-light leading-relaxed mb-12">
-              <p>We are passionate about telling authentic stories through an editorial lens. With years of experience photographing couples across Portugal and Europe, we blend documentary honesty with timeless elegance.</p>
-              <p>Our approach is calm, unobtrusive, and deeply focused on the connection between you and your loved ones. We believe the best images happen when you are truly present in the moment.</p>
+              <p>At BH Wedding Photo, we document weddings in Portugal and across the world, following each story with a calm, observant and editorial approach.</p>
+              <p>Our focus is not on staging moments, but on capturing them as they are.</p>
+              <p className="font-medium text-black">So that, years from now, you don’t just see your day — you feel it.</p>
             </div>
             
             <a href="#galleries" className="inline-flex items-center gap-4 text-xs tracking-[0.2em] uppercase border-b border-black/20 pb-2 hover:border-black transition-colors duration-300">
@@ -163,8 +170,8 @@ function AboutUs() {
 function WhyUs() {
   const pillars = [
     {
-      title: "Portugal Expertise",
-      desc: "From Porto and the Douro Valley to the Algarve coastline."
+      title: "Human Connection",
+      desc: "We believe the best images come from trust, presence, and genuine connection — allowing you to feel completely at ease throughout your day."
     },
     {
       title: "Photo, Video & Drone",
@@ -258,26 +265,26 @@ function Galleries() {
       </div>
 
       {/* Horizontal Slider for Blog Galleries */}
-      <div className="w-full overflow-x-auto md:overflow-hidden mb-32 relative scrollbar-hide snap-x snap-mandatory">
-        <div className="flex w-max md:animate-marquee hover:[animation-play-state:paused] gap-4 md:gap-6 px-4 md:px-6">
+      <div className="w-full overflow-x-auto lg:overflow-hidden mb-32 relative scrollbar-hide snap-x snap-mandatory flex">
+        <div className="flex w-max lg:animate-marquee hover:[animation-play-state:paused] gap-4 lg:gap-6 px-4 lg:px-6">
           {[...blogGalleries, ...blogGalleries].map((gallery, idx) => (
             <a 
               key={idx} 
               href={gallery.link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="relative flex-none w-[80vw] md:w-[45vw] lg:w-[30vw] aspect-[3/2] md:aspect-[4/5] group overflow-hidden rounded-2xl snap-center"
+              className="relative flex-none w-[85vw] sm:w-[60vw] lg:w-[30vw] aspect-[16/10] lg:aspect-[4/5] group overflow-hidden rounded-2xl snap-center block"
             >
               <img 
                 src={gallery.img} 
                 alt={gallery.name} 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-1000 lg:group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/40 md:bg-black/20 md:group-hover:bg-black/50 transition-colors duration-500" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="text-white text-xl md:text-3xl font-serif mb-4 text-center px-4">{gallery.name}</h3>
-                <span className="text-white text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-white/50 pb-1 flex items-center gap-2">
-                  Ver Galeria <ArrowRight className="w-3 h-3" />
+              <div className="absolute inset-0 bg-black/40 lg:bg-black/20 lg:group-hover:bg-black/50 transition-colors duration-500" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="text-white text-2xl lg:text-3xl font-serif mb-4 text-center px-4 drop-shadow-md">{gallery.name}</h3>
+                <span className="text-white text-[10px] lg:text-xs tracking-[0.2em] uppercase border-b border-white/50 pb-1 flex items-center gap-2 drop-shadow-md">
+                  View Gallery <ArrowRight className="w-3 h-3" />
                 </span>
               </div>
             </a>
@@ -292,13 +299,26 @@ function Galleries() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {videos.map((src, idx) => (
             <FadeIn key={idx} delay={idx * 0.1}>
-              <div className="w-full aspect-video relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow duration-500 bg-black/5">
+              <div className="group w-full aspect-video relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow duration-500 bg-black/5">
                 <iframe 
                   src={src}
                   className="absolute inset-0 w-full h-full border-0"
                   allowFullScreen 
                   allowTransparency
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 p-4 md:p-5 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <span className="text-white text-xs md:text-sm font-light tracking-[0.2em] uppercase drop-shadow-md">
+                    {[
+                      "Carolina & Filipe",
+                      "Laura & Marco",
+                      "Sandra & Simon",
+                      "Karina & Pedro",
+                      "Renata & Sérgio",
+                      "Claudia & Fábio",
+                    ][idx]}
+                  </span>
+                </div>
               </div>
             </FadeIn>
           ))}
@@ -471,8 +491,8 @@ function Destination() {
         <div className="order-2 md:order-1 flex flex-col justify-center pr-0 md:pr-20 py-12 md:py-0">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-10 leading-tight">
-              Why{' '}
-              <span className="inline-flex relative h-[1.2em] w-[180px] md:w-[260px] lg:w-[320px] overflow-hidden align-bottom justify-center">
+              Photographing in{' '}
+              <span className="inline-flex relative h-[1.2em] w-[200px] md:w-[280px] lg:w-[340px] overflow-hidden align-bottom justify-center">
                 <AnimatePresence mode="popLayout">
                   <motion.span
                     key={locationIndex}
@@ -485,13 +505,13 @@ function Destination() {
                     {locations[locationIndex].name}
                   </motion.span>
                 </AnimatePresence>
-              </span>{' '}
-              is One of the Most Beautiful Places for a Destination Wedding
+              </span><br className="hidden md:block" />
+              or wherever your story takes us
             </h2>
             <div className="space-y-4 text-sm md:text-base text-black/70 font-light leading-relaxed">
-              <p>From the terraced <span className="font-serif font-bold text-[1.1em] text-black">Douro vineyards</span> to historic cities like <span className="font-serif font-bold text-[1.1em] text-black">Porto and Lisbon</span>, Portugal offers an unmatched backdrop for your celebration.</p>
-              <p>The dramatic <span className="font-serif font-bold text-[1.1em] text-black">Algarve coastline</span>, warm climate, and unique natural light create cinematic moments effortlessly.</p>
-              <p>With easy travel from Europe and the US, it's the perfect gathering place for your loved ones.</p>
+              <p>From the terraced <span className="font-serif font-bold text-[1.1em] text-black">Douro vineyards</span> to historic cities like <span className="font-serif font-bold text-[1.1em] text-black">Porto and Lisbon</span>, we capture weddings all across Portugal.</p>
+              <p>But our passports are always ready. We are truly passionate about international destination weddings and would be honored to travel to your chosen country.</p>
+              <p>Whether you're celebrating locally or planning a faraway adventure, we'll bring our editorial documentary approach to you.</p>
             </div>
           </FadeIn>
         </div>
@@ -591,6 +611,51 @@ function Availability() {
 }
 
 function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mnjllbak", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        form.reset();
+        if (typeof window !== 'undefined' && window.fbq) {
+          window.fbq('track', 'Lead');
+        }
+      } else {
+        const data = await response.json();
+        if (data.errors && data.errors.length > 0) {
+          setErrorMsg(data.errors.map((err: any) => err.message).join(", "));
+        } else {
+          setErrorMsg("There was a problem submitting your form.");
+        }
+      }
+    } catch (err) {
+      setErrorMsg("There was a problem submitting your form.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const inputClass = "px-4 py-3 bg-black/5 border-b border-black/40 text-black focus:outline-none focus:border-black focus:bg-black/10 transition-all rounded-t-md font-sans text-sm placeholder:text-black/30";
+  const labelClass = "text-[11px] tracking-widest uppercase text-black/80 font-semibold mb-1";
+
   return (
     <section id="contact" className="py-24 md:py-40 px-6 max-w-4xl mx-auto">
       <FadeIn>
@@ -604,55 +669,82 @@ function Contact() {
       </FadeIn>
 
       <FadeIn delay={0.2}>
-        <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-8" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] tracking-widest uppercase text-black/60">Name</label>
-              <input type="text" className="border-b border-black/20 pb-2 bg-transparent focus:outline-none focus:border-black transition-colors" />
+            <div className="flex flex-col">
+              <label className={labelClass}>Name *</label>
+              <input name="Name" type="text" required placeholder="Your full name" className={inputClass} />
             </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] tracking-widest uppercase text-black/60">Partner Name</label>
-              <input type="text" className="border-b border-black/20 pb-2 bg-transparent focus:outline-none focus:border-black transition-colors" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] tracking-widest uppercase text-black/60">Email</label>
-              <input type="email" className="border-b border-black/20 pb-2 bg-transparent focus:outline-none focus:border-black transition-colors" />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] tracking-widest uppercase text-black/60">Wedding Date</label>
-              <input type="text" placeholder="DD/MM/YYYY or Season" className="border-b border-black/20 pb-2 bg-transparent focus:outline-none focus:border-black transition-colors placeholder:text-black/20" />
+            <div className="flex flex-col">
+              <label className={labelClass}>Partner Name</label>
+              <input name="Partner Name" type="text" placeholder="Their full name" className={inputClass} />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] tracking-widest uppercase text-black/60">Venue (if known)</label>
-              <input type="text" className="border-b border-black/20 pb-2 bg-transparent focus:outline-none focus:border-black transition-colors" />
+            <div className="flex flex-col">
+              <label className={labelClass}>Email *</label>
+              <input name="Email" type="email" required placeholder="you@example.com" className={inputClass} />
             </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] tracking-widest uppercase text-black/60">Estimated Guest Count</label>
-              <input type="text" className="border-b border-black/20 pb-2 bg-transparent focus:outline-none focus:border-black transition-colors" />
+            <div className="flex flex-col">
+              <label className={labelClass}>Wedding Date</label>
+              {/* Using proper date type for native calendar picker */}
+              <input name="Wedding Date" type="date" className={`${inputClass} uppercase`} />
             </div>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-[10px] tracking-widest uppercase text-black/60">Message</label>
-            <textarea rows={4} placeholder="Tell us about your vision, style, and what's most important to you..." className="border-b border-black/20 pb-2 bg-transparent focus:outline-none focus:border-black transition-colors resize-none placeholder:text-black/20"></textarea>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="flex flex-col">
+              <label className={labelClass}>Venue (If known)</label>
+              <input name="Venue" type="text" placeholder="Where are you celebrating?" className={inputClass} />
+            </div>
+            <div className="flex flex-col">
+              <label className={labelClass}>Estimated Guest Count</label>
+              <input name="Guest Count" type="number" placeholder="e.g. 100" className={inputClass} />
+            </div>
           </div>
 
-          <div className="pt-8 text-center">
-            <button type="submit" className="bg-black text-white px-10 py-4 text-xs tracking-[0.2em] uppercase hover:bg-black/80 transition-colors duration-300 w-full md:w-auto">
-              Check Availability & Collections
-            </button>
+          <div className="flex flex-col">
+            <label className={labelClass}>Message *</label>
+            <textarea 
+              name="Message" 
+              rows={4} 
+              required 
+              placeholder="Tell us about your combined vision, your style, and what's most important to you both for your day..." 
+              className={`${inputClass} resize-none`}
+            ></textarea>
+          </div>
+
+          <div className="pt-8 text-center flex flex-col items-center">
+            {isSuccess ? (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-[#8fbc8f]/20 text-[#2e4c2e] p-8 rounded-lg border border-[#8fbc8f]/40 w-full"
+              >
+                <p className="font-serif text-2xl mb-2">Thank you!</p>
+                <p className="text-sm">We have received your contact successfully and will be in touch shortly.</p>
+              </motion.div>
+            ) : (
+              <>
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="bg-black text-white px-10 py-5 text-xs tracking-[0.2em] uppercase hover:bg-black/80 transition-colors duration-300 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Check Availability & Collections"}
+                </button>
+                {errorMsg && (
+                  <p className="text-red-500 text-sm mt-4">{errorMsg}</p>
+                )}
+              </>
+            )}
           </div>
         </form>
 
         <div className="mt-20 text-center border-t border-black/10 pt-12">
           <p className="text-sm text-black/60 font-light mb-4">Prefer something quick?</p>
-          <a href="#" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase border-b border-black/20 pb-1 hover:border-black transition-colors duration-300">
+          <a href="https://wa.me/351911932129" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase border-b border-black/20 pb-1 hover:border-black transition-colors duration-300">
             <MessageCircle className="w-4 h-4" /> Chat with us on WhatsApp
           </a>
         </div>
@@ -701,11 +793,18 @@ function Footer() {
 }
 
 function WhatsAppFloat() {
+  const handleClick = () => {
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('trackCustom', 'WhatsAppClick');
+    }
+  };
+
   return (
     <motion.a 
       href="https://wa.me/351911932129"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       animate={{ scale: [1, 1.1, 1] }} 
       transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       className="fixed bottom-6 right-6 z-50 bg-[#D4A5A5] text-white p-4 rounded-full shadow-lg hover:bg-[#c49393] flex items-center justify-center"
