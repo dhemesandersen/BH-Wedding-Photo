@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown, ArrowRight, Plus, Minus, MessageCircle, PenTool, Video, Camera, Heart, Image as ImageIcon } from "lucide-react";
+import { ChevronDown, ArrowRight, Plus, Minus, MessageCircle, PenTool, Video, Camera, Heart, Image as ImageIcon, Globe } from "lucide-react";
 import React, { useState, useEffect } from "react";
+import { useLanguage, Language } from './i18n';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string, key?: React.Key }) => (
   <motion.div
@@ -17,10 +18,13 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 declare global {
   interface Window {
     fbq?: (...args: any[]) => void;
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
   }
 }
 
 function Hero() {
+  const { t } = useLanguage();
   return (
     <section className="relative h-[100dvh] w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
@@ -40,8 +44,8 @@ function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
           className="text-[28px] leading-snug sm:text-4xl md:text-[83px] md:leading-[93px] font-serif mb-6 md:mb-6"
         >
-          Destination Wedding <br className="hidden md:block" />
-          <span className="italic block md:inline mt-2 md:mt-0">Photo & Video in Portugal</span>
+          {t('hero.titleLine1')} <br className="hidden md:block" />
+          <span className="italic block md:inline mt-2 md:mt-0">{t('hero.titleLine2')}</span>
         </motion.h1>
         
         <motion.p 
@@ -50,7 +54,7 @@ function Hero() {
           transition={{ duration: 1, delay: 0.6 }}
           className="text-[10px] md:text-base tracking-widest uppercase font-sans mb-8 md:mb-12 max-w-2xl text-white/90 leading-relaxed"
         >
-          Editorial storytelling with Photography, Videography & Aerial Drone coverage for couples traveling from around the world.
+          {t('hero.subtitle')}
         </motion.p>
 
         <motion.div 
@@ -60,10 +64,10 @@ function Hero() {
           className="flex flex-col sm:flex-row items-center gap-5 md:gap-6"
         >
           <a href="#contact" className="bg-white text-black px-6 md:px-8 py-3 md:py-4 text-[10px] md:text-xs tracking-[0.2em] uppercase hover:bg-white/90 transition-colors duration-300">
-            Check Your Wedding Date
+            {t('hero.checkDate')}
           </a>
           <a href="#galleries" className="text-white border-b border-white/30 pb-1 text-[10px] md:text-xs tracking-[0.2em] uppercase hover:border-white transition-colors duration-300">
-            View Our Work
+            {t('hero.viewWork')}
           </a>
         </motion.div>
       </div>
@@ -74,7 +78,7 @@ function Hero() {
         transition={{ duration: 1, delay: 1.5 }}
         className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-1 z-20"
       >
-        <span className="text-[10px] uppercase tracking-widest">Scroll</span>
+        <span className="text-[10px] uppercase tracking-widest">{t('hero.scroll')}</span>
         <ChevronDown className="w-4 h-4 animate-bounce" />
       </motion.div>
     </section>
@@ -82,6 +86,7 @@ function Hero() {
 }
 
 function Storytelling() {
+  const { t } = useLanguage();
   return (
     <section className="py-24 md:py-40 px-6 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
@@ -99,25 +104,25 @@ function Storytelling() {
         <div className="flex flex-col justify-center">
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-serif mb-10 leading-tight">
-              Planning a Wedding in <span className="italic">Portugal</span> from Abroad?
+              {t('story.title')}
             </h2>
           </FadeIn>
           
           <FadeIn delay={0.2}>
             <div className="space-y-6 text-sm md:text-base text-black/70 font-light leading-relaxed mb-12">
-              <p>Planning a destination wedding is exciting, but it also comes with uncertainty.</p>
+              <p>{t('story.p1')}</p>
               <ul className="space-y-2 font-serif font-bold text-[1.1em] text-black/90">
-                <li>Different time zones.</li>
-                <li>Vendors you've never met.</li>
-                <li>Locations you've only seen online.</li>
+                <li>{t('story.li1')}</li>
+                <li>{t('story.li2')}</li>
+                <li>{t('story.li3')}</li>
               </ul>
-              <p>Many couples worry about choosing the right photographer without meeting in person.</p>
-              <p>At BH Wedding Photo, we specialize in destination weddings and guide couples through the entire experience.</p>
-              <p className="font-medium text-black">Our goal is simple: capture not just how your wedding looked, but how it truly felt.</p>
+              <p>{t('story.p2')}</p>
+              <p>{t('story.p3')}</p>
+              <p className="font-medium text-black">{t('story.p4')}</p>
             </div>
             
             <a href="#contact" className="inline-flex items-center gap-4 text-xs tracking-[0.2em] uppercase border-b border-black/20 pb-2 hover:border-black transition-colors duration-300">
-              Schedule a Discovery Call <ArrowRight className="w-4 h-4" />
+              {t('story.scheduleCall')} <ArrowRight className="w-4 h-4" />
             </a>
           </FadeIn>
         </div>
@@ -127,27 +132,27 @@ function Storytelling() {
 }
 
 function AboutUs() {
+  const { t } = useLanguage();
   return (
     <section className="py-24 md:py-32 px-6 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
         <div className="order-2 md:order-1 flex flex-col justify-center">
           <FadeIn>
-            <p className="text-[10px] tracking-widest uppercase text-black/40 mb-6">The Photographers</p>
+            <p className="text-[10px] tracking-widest uppercase text-black/40 mb-6">{t('about.subtitle')}</p>
             <h2 className="text-4xl md:text-5xl font-serif mb-10 leading-tight">
-              Meet the faces behind <br className="hidden md:block" />
-              <span className="italic">BH Wedding Photo</span>
+              {t('about.title')}
             </h2>
           </FadeIn>
           
           <FadeIn delay={0.2}>
             <div className="space-y-6 text-sm md:text-base text-black/70 font-light leading-relaxed mb-12">
-              <p>At BH Wedding Photo, we document weddings in Portugal and across the world, following each story with a calm, observant and editorial approach.</p>
-              <p>Our focus is not on staging moments, but on capturing them as they are.</p>
-              <p className="font-medium text-black">So that, years from now, you don’t just see your day — you feel it.</p>
+              <p>{t('about.p1')}</p>
+              <p>{t('about.p2')}</p>
+              <p className="font-medium text-black">{t('about.p3')}</p>
             </div>
             
             <a href="#galleries" className="inline-flex items-center gap-4 text-xs tracking-[0.2em] uppercase border-b border-black/20 pb-2 hover:border-black transition-colors duration-300">
-              View Our Portfolio <ArrowRight className="w-4 h-4" />
+              {t('about.viewPortfolio')} <ArrowRight className="w-4 h-4" />
             </a>
           </FadeIn>
         </div>
@@ -168,22 +173,23 @@ function AboutUs() {
 }
 
 function WhyUs() {
+  const { t } = useLanguage();
   const pillars = [
     {
-      title: "Human Connection",
-      desc: "We believe the best images come from trust, presence, and genuine connection — allowing you to feel completely at ease throughout your day."
+      title: t('why.p1Title'),
+      desc: t('why.p1Desc')
     },
     {
-      title: "Photo, Video & Drone",
-      desc: "Comprehensive coverage of your day with photography, cinematic videography, and stunning aerial drone footage."
+      title: t('why.p2Title'),
+      desc: t('why.p2Desc')
     },
     {
-      title: "Editorial + Documentary Style",
-      desc: "Elegant imagery inspired by fashion editorials while preserving authentic emotions."
+      title: t('why.p3Title'),
+      desc: t('why.p3Desc')
     },
     {
-      title: "Seamless Communication",
-      desc: "Planning a wedding abroad becomes easier when your photographer understands your expectations."
+      title: t('why.p4Title'),
+      desc: t('why.p4Desc')
     }
   ];
 
@@ -191,9 +197,8 @@ function WhyUs() {
     <section className="py-24 md:py-32 bg-white px-6">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-serif text-center mb-20">
-            Why International Couples <br className="hidden md:block" />
-            <span className="italic">Choose BH Wedding Photo</span>
+          <h2 className="text-3xl md:text-5xl font-serif text-center mb-20 whitespace-pre-line">
+            {t('why.title')}
           </h2>
         </FadeIn>
 
@@ -202,8 +207,8 @@ function WhyUs() {
             <FadeIn key={idx} delay={idx * 0.1}>
               <div className="flex flex-col border-t border-black/10 pt-6">
                 <span className="text-[10px] text-black/40 mb-4 font-mono">0{idx + 1}</span>
-                <h3 className="text-lg font-serif mb-4">{pillar.title}</h3>
-                <p className="text-sm text-black/60 font-light leading-relaxed">{pillar.desc}</p>
+                <h3 className="text-lg font-serif mb-4">{pillar.title as string}</h3>
+                <p className="text-sm text-black/60 font-light leading-relaxed">{pillar.desc as string}</p>
               </div>
             </FadeIn>
           ))}
@@ -211,7 +216,7 @@ function WhyUs() {
 
         <FadeIn delay={0.4} className="flex justify-center">
           <a href="#contact" className="border border-black px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-colors duration-300">
-            Inquire About Your Wedding
+            {t('why.inquire')}
           </a>
         </FadeIn>
       </div>
@@ -220,6 +225,7 @@ function WhyUs() {
 }
 
 function Galleries() {
+  const { t } = useLanguage();
   useEffect(() => {
     const script = document.createElement('script');
     script.src = "https://embedding.pic-time.com/pictures/scripts/compiled/artgalleryembed.js";
@@ -255,10 +261,10 @@ function Galleries() {
         <FadeIn>
           <div className="flex flex-col md:flex-row justify-between items-end gap-8">
             <h2 className="text-4xl md:text-5xl font-serif">
-              Featured <span className="italic">Weddings</span>
+              {t('galleries.title')}
             </h2>
             <a href="https://bhweddingphoto.com/blog/" target="_blank" rel="noopener noreferrer" className="text-xs tracking-[0.2em] uppercase border-b border-black/20 pb-1 hover:border-black transition-colors duration-300">
-              View All Stories
+              {t('galleries.viewAll')}
             </a>
           </div>
         </FadeIn>
@@ -284,7 +290,7 @@ function Galleries() {
               <div className="absolute inset-0 flex flex-col items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500">
                 <h3 className="text-white text-2xl lg:text-3xl font-serif mb-4 text-center px-4 drop-shadow-md">{gallery.name}</h3>
                 <span className="text-white text-[10px] lg:text-xs tracking-[0.2em] uppercase border-b border-white/50 pb-1 flex items-center gap-2 drop-shadow-md">
-                  View Gallery <ArrowRight className="w-3 h-3" />
+                  {t('galleries.viewGallery')} <ArrowRight className="w-3 h-3" />
                 </span>
               </div>
             </a>
@@ -294,7 +300,7 @@ function Galleries() {
 
       <div className="px-6 max-w-7xl mx-auto">
         <FadeIn>
-          <h3 className="text-2xl md:text-3xl font-serif mb-12 text-center italic text-black/80">Wedding Films</h3>
+          <h3 className="text-2xl md:text-3xl font-serif mb-12 text-center text-black/80">{t('galleries.videosTitle')}</h3>
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {videos.map((src, idx) => (
@@ -329,20 +335,21 @@ function Galleries() {
 }
 
 function Experience() {
+  const { t } = useLanguage();
   const steps = [
-    { title: "Inquiry", desc: "Tell us about your wedding plans.", icon: PenTool },
-    { title: "Discovery Call", desc: "We schedule a video call to understand your vision.", icon: Video },
-    { title: "Tailored Collection", desc: "A photography collection adapted to your wedding.", icon: Camera },
-    { title: "Wedding Day", desc: "We capture every moment naturally and discreetly.", icon: Heart },
-    { title: "Gallery Delivery", desc: "You receive a curated gallery with timeless memories.", icon: ImageIcon },
+    { title: t('exp.s1Title'), desc: t('exp.s1Desc'), icon: PenTool },
+    { title: t('exp.s2Title'), desc: t('exp.s2Desc'), icon: Video },
+    { title: t('exp.s3Title'), desc: t('exp.s3Desc'), icon: Camera },
+    { title: t('exp.s4Title'), desc: t('exp.s4Desc'), icon: Heart },
+    { title: t('exp.s5Title'), desc: t('exp.s5Desc'), icon: ImageIcon },
   ];
 
   return (
     <section className="py-24 md:py-40 bg-black text-white px-6">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-serif text-center mb-24">
-            Our Destination <span className="italic">Wedding Experience</span>
+          <h2 className="text-3xl md:text-5xl font-serif text-center mb-24 whitespace-pre-line">
+            {t('exp.title')}
           </h2>
         </FadeIn>
 
@@ -354,8 +361,8 @@ function Experience() {
               <div className={`flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                 <div className={`flex-1 w-full pl-12 md:pl-0 ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
                   <span className="text-[10px] text-white/40 font-mono mb-2 block">STEP 0{idx + 1}</span>
-                  <h3 className="text-xl font-serif mb-3">{step.title}</h3>
-                  <p className="text-sm text-white/60 font-light">{step.desc}</p>
+                  <h3 className="text-xl font-serif mb-3">{step.title as string}</h3>
+                  <p className="text-sm text-white/60 font-light">{step.desc as string}</p>
                 </div>
                 
                 <div className="absolute left-0 md:relative md:left-auto w-8 h-8 rounded-full bg-black border border-white/30 flex items-center justify-center z-10">
@@ -377,7 +384,7 @@ function Experience() {
 
         <FadeIn className="flex justify-center">
           <a href="#contact" className="bg-white text-black px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-white/90 transition-colors duration-300">
-            Check Availability
+            {t('exp.checkAvailability')}
           </a>
         </FadeIn>
       </div>
@@ -386,6 +393,7 @@ function Experience() {
 }
 
 function Testimonials() {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
@@ -420,7 +428,7 @@ function Testimonials() {
     <section className="py-24 md:py-40 px-6 bg-white overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
         <FadeIn>
-          <p className="text-[10px] tracking-widest uppercase text-black/40 mb-12">Kind Words</p>
+          <p className="text-[10px] tracking-widest uppercase text-black/40 mb-12">{t('test.kindWords')}</p>
           
           <div className="relative h-[450px] sm:h-[350px] md:h-[300px] flex items-center justify-center">
             <AnimatePresence mode="wait">
@@ -469,6 +477,7 @@ function Testimonials() {
 }
 
 function Destination() {
+  const { t } = useLanguage();
   const [locationIndex, setLocationIndex] = useState(0);
   const locations = [
     { name: "Portugal", img: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?q=80&w=2070&auto=format&fit=crop" },
@@ -491,7 +500,7 @@ function Destination() {
         <div className="order-2 md:order-1 flex flex-col justify-center pr-0 md:pr-20 py-12 md:py-0">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-10 leading-tight">
-              Photographing in{' '}
+              {t('dest.title')}
               <span className="inline-flex relative h-[1.2em] w-[200px] md:w-[280px] lg:w-[340px] overflow-hidden align-bottom justify-center">
                 <AnimatePresence mode="popLayout">
                   <motion.span
@@ -506,12 +515,12 @@ function Destination() {
                   </motion.span>
                 </AnimatePresence>
               </span><br className="hidden md:block" />
-              or wherever your story takes us
+              {t('dest.title2')}
             </h2>
             <div className="space-y-4 text-sm md:text-base text-black/70 font-light leading-relaxed">
-              <p>From the terraced <span className="font-serif font-bold text-[1.1em] text-black">Douro vineyards</span> to historic cities like <span className="font-serif font-bold text-[1.1em] text-black">Porto and Lisbon</span>, we capture weddings all across Portugal.</p>
-              <p>But our passports are always ready. We are truly passionate about international destination weddings and would be honored to travel to your chosen country.</p>
-              <p>Whether you're celebrating locally or planning a faraway adventure, we'll bring our editorial documentary approach to you.</p>
+              <p>{t('dest.p1')}</p>
+              <p>{t('dest.p2')}</p>
+              <p>{t('dest.p3')}</p>
             </div>
           </FadeIn>
         </div>
@@ -537,13 +546,15 @@ function Destination() {
 }
 
 function FAQ() {
+  const { t } = useLanguage();
   const faqs = [
-    { q: "Do you photograph weddings across Portugal?", a: "Yes, we travel throughout Portugal, including Porto, the Douro Valley, Lisbon, Sintra, and the Algarve." },
-    { q: "Can we book without visiting Portugal first?", a: "Absolutely. Most of our international couples book us before visiting. We handle everything via video calls and email to ensure a seamless process." },
-    { q: "Do you speak English?", a: "Yes, we are fluent in English and communicate seamlessly with couples and vendors from around the world." },
-    { q: "How far in advance should we book?", a: "We recommend booking 12 to 18 months in advance, especially for peak wedding season (May to October)." },
-    { q: "What is included in your photography collections?", a: "Our collections are tailored to your needs, typically including full-day coverage, a curated online gallery, high-resolution images, and an optional engagement session or second photographer." },
-    { q: "How do payments work for international couples?", a: "We accept international bank transfers (via Wise or direct wire) and major credit cards, making the payment process simple and secure regardless of your location." },
+    { q: t('faq.q1'), a: t('faq.a1') },
+    { q: t('faq.q2'), a: t('faq.a2') },
+    { q: t('faq.q3'), a: t('faq.a3') },
+    { q: t('faq.q4'), a: t('faq.a4') },
+    { q: t('faq.q5'), a: t('faq.a5') },
+    { q: t('faq.q6'), a: t('faq.a6') },
+    { q: t('faq.q7'), a: t('faq.a7') },
   ];
 
   const [openIdx, setOpenIdx] = useState<number | null>(0);
@@ -551,8 +562,8 @@ function FAQ() {
   return (
     <section className="py-24 md:py-40 px-6 max-w-3xl mx-auto">
       <FadeIn>
-        <h2 className="text-3xl md:text-5xl font-serif text-center mb-16">
-          Frequently Asked <span className="italic">Questions</span>
+        <h2 className="text-3xl md:text-5xl font-serif text-center mb-16 whitespace-pre-line">
+          {t('faq.title')}
         </h2>
       </FadeIn>
 
@@ -564,7 +575,7 @@ function FAQ() {
                 onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
                 className="w-full py-6 flex justify-between items-center text-left focus:outline-none"
               >
-                <span className="font-serif text-lg md:text-xl pr-8">{faq.q}</span>
+                <span className="font-serif text-lg md:text-xl pr-8">{faq.q as string}</span>
                 {openIdx === idx ? <Minus className="w-5 h-5 text-black/50 shrink-0" /> : <Plus className="w-5 h-5 text-black/50 shrink-0" />}
               </button>
               <AnimatePresence>
@@ -576,7 +587,7 @@ function FAQ() {
                     className="overflow-hidden"
                   >
                     <p className="pb-6 text-sm text-black/60 font-light leading-relaxed">
-                      {faq.a}
+                      {faq.a as string}
                     </p>
                   </motion.div>
                 )}
@@ -590,19 +601,19 @@ function FAQ() {
 }
 
 function Availability() {
+  const { t } = useLanguage();
   return (
     <section className="py-24 md:py-32 bg-black text-white px-6 text-center">
       <div className="max-w-3xl mx-auto flex flex-col items-center">
         <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-serif mb-8 leading-tight">
-            We Take on a Limited Number of <br className="hidden md:block" />
-            <span className="italic">Destination Weddings Each Year</span>
+          <h2 className="text-3xl md:text-5xl font-serif mb-8 leading-tight whitespace-pre-line">
+            {t('avail.title')}
           </h2>
           <p className="text-sm md:text-base text-white/70 font-light mb-12 max-w-xl mx-auto">
-            To ensure every couple receives our full attention, we accept a limited number of destination weddings annually.
+            {t('avail.desc')}
           </p>
           <a href="#contact" className="bg-white text-black px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-white/90 transition-colors duration-300">
-            Secure Your Date
+            {t('avail.contact')}
           </a>
         </FadeIn>
       </div>
@@ -614,6 +625,7 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -635,8 +647,16 @@ function Contact() {
       if (response.ok) {
         setIsSuccess(true);
         form.reset();
-        if (typeof window !== 'undefined' && window.fbq) {
-          window.fbq('track', 'Lead');
+        if (typeof window !== 'undefined') {
+          if (window.fbq) {
+            window.fbq('track', 'Lead');
+          }
+          if (window.gtag) {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'engagement',
+              event_label: 'Contact Form Selected'
+            });
+          }
         }
       } else {
         const data = await response.json();
@@ -660,11 +680,10 @@ function Contact() {
     <section id="contact" className="py-24 md:py-40 px-6 max-w-4xl mx-auto">
       <FadeIn>
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif mb-6">
-            Let's Talk About Your <br className="hidden md:block" />
-            <span className="italic">Wedding in Portugal</span>
+          <h2 className="text-3xl md:text-5xl font-serif mb-6 whitespace-pre-line">
+            {t('contact.title')}
           </h2>
-          <p className="text-sm text-black/60 font-light">Fill out the form below and we'll get back to you within 48 hours.</p>
+          <p className="text-sm text-black/60 font-light">{t('contact.subtitle')}</p>
         </div>
       </FadeIn>
 
@@ -672,22 +691,22 @@ function Contact() {
         <form className="space-y-8" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col">
-              <label className={labelClass}>Name *</label>
-              <input name="Name" type="text" required placeholder="Your full name" className={inputClass} />
+              <label className={labelClass}>{t('contact.name')}</label>
+              <input name="Name" type="text" required placeholder={t('contact.namePlaceholder')} className={inputClass} />
             </div>
             <div className="flex flex-col">
-              <label className={labelClass}>Partner Name</label>
-              <input name="Partner Name" type="text" placeholder="Their full name" className={inputClass} />
+              <label className={labelClass}>{t('contact.partnerName')}</label>
+              <input name="Partner Name" type="text" placeholder={t('contact.partnerPlaceholder')} className={inputClass} />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col">
-              <label className={labelClass}>Email *</label>
-              <input name="Email" type="email" required placeholder="you@example.com" className={inputClass} />
+              <label className={labelClass}>{t('contact.email')}</label>
+              <input name="Email" type="email" required placeholder={t('contact.emailPlaceholder')} className={inputClass} />
             </div>
             <div className="flex flex-col">
-              <label className={labelClass}>Wedding Date</label>
+              <label className={labelClass}>{t('contact.date')}</label>
               {/* Using proper date type for native calendar picker */}
               <input name="Wedding Date" type="date" className={`${inputClass} uppercase`} />
             </div>
@@ -695,22 +714,22 @@ function Contact() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col">
-              <label className={labelClass}>Venue (If known)</label>
-              <input name="Venue" type="text" placeholder="Where are you celebrating?" className={inputClass} />
+              <label className={labelClass}>{t('contact.venue')}</label>
+              <input name="Venue" type="text" placeholder={t('contact.venuePlaceholder')} className={inputClass} />
             </div>
             <div className="flex flex-col">
-              <label className={labelClass}>Estimated Guest Count</label>
-              <input name="Guest Count" type="number" placeholder="e.g. 100" className={inputClass} />
+              <label className={labelClass}>{t('contact.guests')}</label>
+              <input name="Guest Count" type="number" placeholder={t('contact.guestsPlaceholder')} className={inputClass} />
             </div>
           </div>
 
           <div className="flex flex-col">
-            <label className={labelClass}>Message *</label>
+            <label className={labelClass}>{t('contact.message')}</label>
             <textarea 
               name="Message" 
               rows={4} 
               required 
-              placeholder="Tell us about your combined vision, your style, and what's most important to you both for your day..." 
+              placeholder={t('contact.messagePlaceholder')} 
               className={`${inputClass} resize-none`}
             ></textarea>
           </div>
@@ -722,8 +741,8 @@ function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-[#8fbc8f]/20 text-[#2e4c2e] p-8 rounded-lg border border-[#8fbc8f]/40 w-full"
               >
-                <p className="font-serif text-2xl mb-2">Thank you!</p>
-                <p className="text-sm">We have received your contact successfully and will be in touch shortly.</p>
+                <p className="font-serif text-2xl mb-2">{t('contact.successTitle')}</p>
+                <p className="text-sm">{t('contact.successMessage')}</p>
               </motion.div>
             ) : (
               <>
@@ -732,7 +751,7 @@ function Contact() {
                   disabled={isSubmitting}
                   className="bg-black text-white px-10 py-5 text-xs tracking-[0.2em] uppercase hover:bg-black/80 transition-colors duration-300 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? "Sending..." : "Check Availability & Collections"}
+                  {isSubmitting ? t('contact.sending') : t('contact.button')}
                 </button>
                 {errorMsg && (
                   <p className="text-red-500 text-sm mt-4">{errorMsg}</p>
@@ -743,9 +762,14 @@ function Contact() {
         </form>
 
         <div className="mt-20 text-center border-t border-black/10 pt-12">
-          <p className="text-sm text-black/60 font-light mb-4">Prefer something quick?</p>
-          <a href="https://wa.me/351911932129" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase border-b border-black/20 pb-1 hover:border-black transition-colors duration-300">
-            <MessageCircle className="w-4 h-4" /> Chat with us on WhatsApp
+          <p className="text-sm text-black/60 font-light mb-4">{t('contact.quickText')}</p>
+          <a href="https://wa.me/351911932129" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase border-b border-black/20 pb-1 hover:border-black transition-colors duration-300" onClick={() => {
+            if (typeof window !== 'undefined') {
+              if (window.fbq) window.fbq('trackCustom', 'WhatsAppClick');
+              if (window.gtag) window.gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: 'WhatsApp Text Link' });
+            }
+          }}>
+            <MessageCircle className="w-4 h-4" /> {t('contact.whatsapp')}
           </a>
         </div>
       </FadeIn>
@@ -754,6 +778,7 @@ function Contact() {
 }
 
 function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="py-16 px-6 border-t border-black/10 text-center flex flex-col items-center gap-8 bg-white">
       <a href="https://bhweddingphoto.com/" target="_blank" rel="noopener noreferrer">
@@ -782,20 +807,29 @@ function Footer() {
         <span className="hidden md:inline">|</span>
         <a href="https://bhweddingphoto.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Terms & Conditions</a>
         <span className="hidden md:inline">|</span>
-        <a href="https://bhweddingphoto.com/cookies-policy/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Cookie Policy</a>
+        <a href="https://bhweddingphoto.com/cookies-policy/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">{t('footer.cookie')}</a>
       </div>
 
       <p className="text-[10px] text-black/40 uppercase tracking-widest mt-2">
-        &copy; {new Date().getFullYear()} BH Wedding Photo. All rights reserved.
+        &copy; {new Date().getFullYear()} {t('footer.rights')}
       </p>
     </footer>
   );
 }
 
 function WhatsAppFloat() {
+  const { t } = useLanguage();
   const handleClick = () => {
-    if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('trackCustom', 'WhatsAppClick');
+    if (typeof window !== 'undefined') {
+      if (window.fbq) {
+        window.fbq('trackCustom', 'WhatsAppClick');
+      }
+      if (window.gtag) {
+        window.gtag('event', 'whatsapp_click', {
+          event_category: 'engagement',
+          event_label: 'WhatsApp Floating Button'
+        });
+      }
     }
   };
 
@@ -808,6 +842,7 @@ function WhatsAppFloat() {
       animate={{ scale: [1, 1.1, 1] }} 
       transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       className="fixed bottom-6 right-6 z-50 bg-[#D4A5A5] text-white p-4 rounded-full shadow-lg hover:bg-[#c49393] flex items-center justify-center"
+      title={t('contact.whatsapp')}
       aria-label="Chat on WhatsApp"
     >
       <MessageCircle className="w-6 h-6" />
@@ -817,6 +852,7 @@ function WhatsAppFloat() {
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLanguage();
 
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
@@ -835,7 +871,7 @@ function Header() {
             referrerPolicy="no-referrer"
           />
         </a>
-        <a 
+          <a 
           href="#contact" 
           className={`text-[10px] tracking-[0.2em] uppercase border px-4 py-2 transition-colors duration-300 ${
             isScrolled 
@@ -843,10 +879,63 @@ function Header() {
               : 'border-white text-white hover:bg-white hover:text-black'
           }`}
         >
-          Inquire
+          {t('why.inquire')}
         </a>
       </div>
     </header>
+  );
+}
+
+function LanguageFloat() {
+  const { language, setLanguage } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const languages = [
+    { code: 'en', label: 'English', flag: '🇬🇧' },
+    { code: 'pt', label: 'Português', flag: '🇵🇹' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+  ];
+
+  return (
+    <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.9 }}
+            className="mb-2 bg-white p-1.5 rounded-lg shadow-xl border border-black/5 flex flex-col gap-0.5"
+          >
+            {languages.map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => {
+                  setLanguage(lang.code as Language);
+                  setIsOpen(false);
+                }}
+                className={`flex items-center gap-1.5 px-2 py-1 rounded border-none outline-none text-[10px] transition-colors ${
+                  language === lang.code ? 'bg-black/5 font-medium' : 'hover:bg-black/5'
+                }`}
+              >
+                <span className="text-xs">{lang.flag}</span>
+                <span>{lang.label}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="bg-black text-white p-1.5 md:px-2.5 md:py-1.5 rounded-full shadow-lg hover:bg-black/80 transition-all flex items-center justify-center gap-1.5"
+        aria-label="Change Language"
+      >
+        <Globe className="w-3.5 h-3.5" />
+        <span className="hidden md:inline-block text-[9px] uppercase tracking-widest font-medium">
+          {language.toUpperCase()}
+        </span>
+      </button>
+    </div>
   );
 }
 
@@ -869,6 +958,7 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppFloat />
+      <LanguageFloat />
     </div>
   );
 }
