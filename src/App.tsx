@@ -648,6 +648,9 @@ function Contact() {
         setIsSuccess(true);
         form.reset();
         if (typeof window !== 'undefined') {
+          // Update URL without reloading the page so it can be used for conversion tracking
+          window.history.pushState({}, '', window.location.pathname + '?lead=success#contact');
+          
           if (window.fbq) {
             window.fbq('track', 'Lead');
           }
