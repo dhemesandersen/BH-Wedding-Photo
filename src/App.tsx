@@ -237,13 +237,13 @@ function Galleries() {
   }, []);
 
   const blogGalleries = [
-    { name: "Andreia & José", link: "https://bhweddingphoto.com/andreia-jose/", img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" },
-    { name: "Sruti & Srijith", link: "https://bhweddingphoto.com/sruti-srijith/", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" },
-    { name: "Francisca & Inês", link: "https://bhweddingphoto.com/francisca-ines/", img: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop" },
-    { name: "Gloria & Patrick", link: "https://bhweddingphoto.com/gloria-patrick/", img: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" },
-    { name: "Cindy & David", link: "https://bhweddingphoto.com/cindy-david/", img: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=800&auto=format&fit=crop" },
-    { name: "Alicia & Sebastien", link: "https://bhweddingphoto.com/alicia-sebastien-2/", img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" },
-    { name: "Diana João & Luís", link: "https://bhweddingphoto.com/diana-luis/", img: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop" },
+    { name: "Andreia & José", link: "https://bhweddingphoto.com/andreia-jose/", img: "https://bhweddingphoto.com/wp-content/uploads/2025/01/AZ-Sessao-Noivos-11-scaled.jpg" },
+    { name: "Sruti & Srijith", link: "https://bhweddingphoto.com/sruti-srijith/", img: "https://bhweddingphoto.com/wp-content/uploads/2025/01/SS_20_p-15-scaled.jpg" },
+    { name: "Francisca & Inês", link: "https://bhweddingphoto.com/francisca-ines/", img: "https://bhweddingphoto.com/wp-content/uploads/2025/02/FI-3-23-scaled.jpg" },
+    { name: "Gloria & Patrick", link: "https://bhweddingphoto.com/gloria-patrick/", img: "https://bhweddingphoto.com/wp-content/uploads/2025/02/06072024-DSC05601-scaled.jpg" },
+    { name: "Cindy & David", link: "https://bhweddingphoto.com/cindy-david/", img: "https://bhweddingphoto.com/wp-content/uploads/2025/10/CD_4-11-scaled.jpg" },
+    { name: "Alicia & Sebastien", link: "https://bhweddingphoto.com/alicia-sebastien-2/", img: "https://bhweddingphoto.com/wp-content/uploads/2026/01/W_AS05-53-scaled.jpg" },
+    { name: "Diana João & Luís", link: "https://bhweddingphoto.com/diana-luis/", img: "https://bhweddingphoto.com/wp-content/uploads/2026/02/DL_06-1-scaled.jpg" },
   ];
 
   const videos = [
@@ -398,22 +398,28 @@ function Testimonials() {
 
   const testimonials = [
     {
-      name: "Sarah & Michael",
-      country: "United States",
-      text: "Choosing BH for our destination wedding in the Algarve was the best decision we made. They captured the light and our love perfectly. Even planning from across the Atlantic, they made us feel completely at ease. The final gallery exceeded all our expectations!",
-      img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=150&auto=format&fit=crop"
+      name: "Catarina P.",
+      country: "Our choice was more than correct.",
+      text: "When we first met Beatriz and Henrique, we were already enchanted by the work we had seen and immediately identified with... But from then on, it was always uphill! Always available, everything flowed incredibly smoothly! And on top of that, they helped us immensely throughout the wedding. We felt like we were surrounded by good friends! We really couldn't have chosen better!",
+      img: "https://bhweddingphoto.com/wp-content/uploads/2025/01/gu_1146763.webp"
     },
     {
-      name: "Alicia & Sebastien",
-      country: "France",
-      text: "We don't live in the same country, we don't speak the same language, and yet, while looking for a photography style that resembles us, I came across their page and it was obvious. The photos received a few weeks later are magnificent! Thank you BH Wedding Photography.",
-      img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=150&auto=format&fit=crop"
+      name: "Francisca V.",
+      country: "The perfect pair for our perfect day.",
+      text: "From the first day we met Bea and Henrique, we knew we were a perfect match, both because of their shared sense of humor and the care they have for what they do and for their clients. We can only thank them for being part of our craziness, for accepting our silly ideas, and for being part of our special day. Much more than photographers, we are sure they will be friends for life.",
+      img: "https://bhweddingphoto.com/wp-content/uploads/2025/01/gu_1854681.webp"
     },
     {
-      name: "Emma & James",
-      country: "United Kingdom",
-      text: "The editorial style of their photography is simply breathtaking. They managed to capture the essence of our celebration in Porto with such elegance and authenticity. They were a calming presence throughout the day, and the video brings us to tears every time we watch it.",
-      img: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=150&auto=format&fit=crop"
+      name: "Catarina R.",
+      country: "The Best!",
+      text: "If you're wondering about photographers... Beatriz and Henrique are the perfect choice!! Tireless from day one! Extremely kind, with a huge sensitivity in capturing the best moments!! They are truly an incredible couple! Super professional, with contagious joy. I dare say that without them the day wouldn't have gone so well! Among the best you can find!! Thank you",
+      img: "https://bhweddingphoto.com/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-10-as-14.53.22.png"
+    },
+    {
+      name: "Carolina",
+      country: "Feedback on BH",
+      text: "We were very pleased with the service provided by BH before, during, and after our wedding. The team, led by Henrique and Beatriz, is composed of excellent professionals who gave us confidence from the very first moment. They are meticulous, approachable, have positive energy, and were flexible to all our requests and preferences. We highly recommend them!",
+      img: "https://bhweddingphoto.com/wp-content/uploads/2026/02/Captura-de-Tela-2026-02-10-as-14.53.07.png"
     }
   ];
 
@@ -430,7 +436,7 @@ function Testimonials() {
         <FadeIn>
           <p className="text-[10px] tracking-widest uppercase text-black/40 mb-12">{t('test.kindWords')}</p>
           
-          <div className="relative h-[450px] sm:h-[350px] md:h-[300px] flex items-center justify-center">
+          <div className="relative h-[480px] sm:h-[380px] md:h-[320px] w-full flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -440,17 +446,17 @@ function Testimonials() {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="absolute inset-0 flex flex-col items-center justify-center"
               >
-                <h2 className="text-xl md:text-3xl font-serif leading-relaxed italic mb-10 px-4">
+                <h2 className="text-base sm:text-lg md:text-xl font-serif leading-relaxed italic mb-8 px-4 text-gray-800 max-w-3xl mx-auto">
                   "{testimonials[currentIndex].text}"
                 </h2>
-                <div className="flex flex-col items-center gap-4">
+                <div className="flex flex-col items-center gap-3">
                   <img 
                     src={testimonials[currentIndex].img} 
                     alt={testimonials[currentIndex].name}
-                    className="w-16 h-16 rounded-full object-cover border border-black/10"
+                    className="w-14 h-14 rounded-full object-cover border border-black/10 shadow-sm"
                   />
-                  <div>
-                    <p className="text-sm tracking-widest uppercase">{testimonials[currentIndex].name}</p>
+                  <div className="text-center">
+                    <p className="text-xs tracking-widest uppercase font-medium">{testimonials[currentIndex].name}</p>
                     <p className="text-xs text-black/50 font-serif italic">{testimonials[currentIndex].country}</p>
                   </div>
                 </div>
@@ -458,7 +464,7 @@ function Testimonials() {
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-center gap-3 mt-8">
+          <div className="flex justify-center gap-3 mt-8 relative z-10">
             {testimonials.map((_, idx) => (
               <button
                 key={idx}
@@ -480,11 +486,11 @@ function Destination() {
   const { t } = useLanguage();
   const [locationIndex, setLocationIndex] = useState(0);
   const locations = [
-    { name: "Portugal", img: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?q=80&w=2070&auto=format&fit=crop" },
-    { name: "Porto", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop" },
-    { name: "Lisbon", img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2070&auto=format&fit=crop" },
-    { name: "the Algarve", img: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=2070&auto=format&fit=crop" },
-    { name: "Northern Portugal", img: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" }
+    { name: "Portugal", img: "/1.jpg" },
+    { name: "Porto", img: "/2.jpg" },
+    { name: "Lisbon", img: "/3.jpg" },
+    { name: "the Algarve", img: "/4.jpg" },
+    { name: "Northern Portugal", img: "/5.jpg" }
   ];
 
   useEffect(() => {
@@ -692,6 +698,9 @@ function Contact() {
 
       <FadeIn delay={0.2}>
         <form className="space-y-8" onSubmit={handleSubmit}>
+          {/* Honeypot field for Formspree to prevent bot spam without using recaptcha limits */}
+          <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col">
               <label className={labelClass}>{t('contact.name')}</label>
