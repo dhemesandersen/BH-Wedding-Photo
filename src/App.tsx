@@ -226,15 +226,6 @@ function WhyUs() {
 
 function Galleries() {
   const { t } = useLanguage();
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://embedding.pic-time.com/pictures/scripts/compiled/artgalleryembed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    }
-  }, []);
 
   const blogGalleries = [
     { name: "Andreia & José", link: "https://bhweddingphoto.com/andreia-jose/", img: "https://bhweddingphoto.com/wp-content/uploads/2025/01/AZ-Sessao-Noivos-11-scaled.jpg" },
@@ -310,7 +301,7 @@ function Galleries() {
                   src={src}
                   className="absolute inset-0 w-full h-full border-0"
                   allowFullScreen 
-                  allowTransparency
+                  allowtransparency="true"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 <div className="absolute inset-x-0 bottom-0 p-4 md:p-5 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
