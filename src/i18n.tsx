@@ -75,6 +75,12 @@ export const translations = {
     test: {
       kindWords: "Kind Words"
     },
+    cookie: {
+      message: "We use cookies to improve your experience and analyze our traffic. By clicking 'Accept', you consent to our use of cookies.",
+      accept: "Accept",
+      decline: "Decline",
+      policy: "Cookie Policy"
+    },
     dest: {
       title: "Photographing in ",
       title2: "or wherever your story takes us",
@@ -200,6 +206,12 @@ export const translations = {
     },
     test: {
       kindWords: "Palavras de Carinho"
+    },
+    cookie: {
+      message: "Utilizamos cookies para melhorar a sua experiência e analisar o nosso tráfego. Ao clicar em 'Aceitar', consente a nossa utilização de cookies.",
+      accept: "Aceitar",
+      decline: "Recusar",
+      policy: "Política de Cookies"
     },
     dest: {
       title: "A Fotografar em ",
@@ -327,6 +339,12 @@ export const translations = {
     test: {
       kindWords: "Palabras Amables"
     },
+    cookie: {
+      message: "Utilizamos cookies para mejorar su experiencia y analizar nuestro tráfico. Al hacer clic en 'Aceptar', acepta nuestro uso de cookies.",
+      accept: "Aceptar",
+      decline: "Rechazar",
+      policy: "Política de Cookies"
+    },
     dest: {
       title: "Fotografiando en ",
       title2: "o donde sea que nos lleve tu historia",
@@ -452,6 +470,12 @@ export const translations = {
     },
     test: {
       kindWords: "Mots Doux"
+    },
+    cookie: {
+      message: "Nous utilisons des cookies pour améliorer votre expérience et analyser notre trafic. En cliquant sur « Accepter », vous consentez à notre utilisation des cookies.",
+      accept: "Accepter",
+      decline: "Refuser",
+      policy: "Politique de Cookies"
     },
     dest: {
       title: "Photographier au ",

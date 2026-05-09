@@ -942,6 +942,105 @@ function LanguageFloat() {
   );
 }
 
+function CookieConsent() {
+  const { t } = useLanguage();
+  const [isVisible, setIsVisible] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    try {
+      const consent = localStorage.getItem('cookie-consent');
+      if (!consent) {
+        // Small delay so it animates in nicely
+        const timer = setTimeout(() => setIsVisible(true), 1500);
+        return () => clearTimeout(timer);
+      }
+    } catch (e) {
+      // Fallback if localStorage is blocked (common in iframes)
+      const timer = setTimeout(() => setIsVisible(true), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleAccept = () => {
+    try {
+      localStorage.setItem('cookie-consent', 'accepted');
+    } catch (e) {}
+    setIsVisible(false);
+    if (window.gtag) {
+      window.gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted'
+      });
+    }
+    if (window.fbq) {
+      window.fbq('consent', 'grant');
+    }
+  };
+
+  const handleDecline = () => {
+    try {
+      localStorage.setItem('cookie-consent', 'declined');
+    } catch (e) {}
+    setIsVisible(false);
+  };
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div 
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 50, opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-[100] font-sans"
+        >
+          {isExpanded ? (
+            <div className="bg-white shadow-2xl rounded-2xl border border-black/5 p-5 md:p-6 w-[calc(100vw-32px)] sm:w-[360px] flex flex-col gap-4">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-black/60" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 12.5v.01"/><path d="M12 16v.01"/><path d="M11 11v.01"/><path d="M15 8.5v.01"/></svg>
+                  <h3 className="text-sm font-semibold text-black">Cookies</h3>
+                </div>
+                <button onClick={() => setIsExpanded(false)} className="text-black/40 hover:text-black transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+              </div>
+              <p className="text-xs sm:text-[13px] text-black/60 leading-relaxed">
+                {t('cookie.message')} <a href="https://bhweddingphoto.com/cookies-policy/" target="_blank" rel="noopener noreferrer" className="underline hover:text-black font-medium transition-colors">{t('cookie.policy')}</a>
+              </p>
+              <div className="flex items-center gap-2 mt-2">
+                <button 
+                  onClick={handleDecline} 
+                  className="flex-1 px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest text-black/60 bg-black/5 border border-transparent rounded-lg hover:bg-black/10 transition-colors"
+                >
+                  {t('cookie.decline')}
+                </button>
+                <button 
+                  onClick={handleAccept} 
+                  className="flex-1 px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest text-white bg-black border border-black rounded-lg hover:bg-black/90 transition-colors shadow-md"
+                >
+                  {t('cookie.accept')}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              onClick={() => setIsExpanded(true)}
+              className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 rounded-full px-4 py-3 flex items-center gap-2.5 text-xs font-semibold text-black/70 hover:text-black hover:scale-105 transition-all group"
+            >
+              <svg className="w-4 h-4 text-black/40 group-hover:text-black transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 12.5v.01"/><path d="M12 16v.01"/><path d="M11 11v.01"/><path d="M15 8.5v.01"/></svg>
+              Cookies
+            </button>
+          )}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function App() {
   return (
     <div className="min-h-screen selection:bg-black/10">
@@ -962,6 +1061,7 @@ export default function App() {
       <Footer />
       <WhatsAppFloat />
       <LanguageFloat />
+      <CookieConsent />
     </div>
   );
 }
