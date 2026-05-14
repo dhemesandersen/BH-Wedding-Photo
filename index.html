@@ -69,7 +69,7 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('consent', 'revoke'); // Default to revoked
+      fbq('consent', 'grant'); // Default to granted
       fbq('init', '4413381415573844');
       fbq('track', 'PageView');
     </script>
@@ -80,12 +80,12 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       
-      // Default consent to 'denied'
+      // Default consent to 'granted'
       gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted'
       });
       
       gtag('js', new Date());
