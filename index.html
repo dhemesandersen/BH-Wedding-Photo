@@ -93,6 +93,46 @@
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SJJRTRTPD"></script>
     <!-- End Google Analytics -->
+      <!-- BH: eventos extra do Meta Pixel (Contact + ViewContent). Nao mexe no Lead. -->
+    <script>
+    (function () {
+      if (window.__bhTrackingExtras) return;
+      window.__bhTrackingExtras = true;
+      function fb(ev, p) { if (typeof window.fbq === "function") { try { window.fbq("track", ev, p || {}); } catch (e) {} } }
+      function ga(ev, p) { if (typeof window.gtag === "function") { try { window.gtag("event", ev, p || {}); } catch (e) {} } }
+      var done = {};
+      document.addEventListener("click", function (e) {
+        var a = e.target && e.target.closest ? e.target.closest("a") : null;
+        if (!a) return;
+        var href = a.getAttribute("href") || "";
+        var ch = null;
+        if (/wa\.me|api\.whatsapp\.com|web\.whatsapp\.com|^whatsapp:/i.test(href)) ch = "whatsapp";
+        else if (/^mailto:/i.test(href)) ch = "email";
+        else if (/^tel:/i.test(href)) ch = "phone";
+        if (!ch || done[ch]) return;
+        done[ch] = true;
+        fb("Contact", { content_category: ch, content_name: "Destination Wedding Enquiry" });
+        ga("contact", { event_category: "engagement", event_label: ch });
+      }, true);
+      var vc = false;
+      function fireVC(reason) {
+        if (vc) return;
+        vc = true;
+        fb("ViewContent", { content_category: "landing_engaged", content_name: reason });
+        ga("view_content_engaged", { event_category: "engagement", event_label: reason });
+        window.removeEventListener("scroll", onScroll);
+      }
+      function onScroll() {
+        var d = document.documentElement;
+        var max = d.scrollHeight - window.innerHeight;
+        if (max <= 0) return;
+        if ((window.pageYOffset || d.scrollTop) / max >= 0.5) fireVC("scroll_50");
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      setTimeout(function () { fireVC("time_30s"); }, 30000);
+    })();
+    </script>
+
   </head>
   <body>
     <noscript><img height="1" width="1" style="display:none"
